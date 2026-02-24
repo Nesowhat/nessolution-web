@@ -1,4 +1,5 @@
-import { Star, Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const testimonials = [
   {
@@ -22,42 +23,56 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(0,212,255,0.03),rgba(255,255,255,0))]"></div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            What Our <span className="bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Clients Say</span>
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+            What Our Clients Say
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied clients
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="relative p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2"
-            >
-              <div className="absolute -top-4 left-8 w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-                <Quote className="w-5 h-5 text-white" />
-              </div>
-
-              <div className="flex gap-1 mb-4 mt-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+        <div className="relative">
+          <div className="p-12 bg-white/5 border border-white/10 rounded-3xl min-h-96 flex flex-col justify-between">
+            <div>
+              <div className="flex gap-1 mb-8">
+                {[...Array(testimonials[current].rating)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 fill-cyan-400 text-cyan-400" />
                 ))}
               </div>
-
-              <p className="text-gray-300 mb-6 leading-relaxed">{testimonial.comment}</p>
-
-              <div className="border-t border-white/10 pt-6">
-                <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                <p className="text-cyan-400 text-sm">{testimonial.business}</p>
-              </div>
+              <p className="text-2xl text-white mb-8 leading-relaxed font-light">
+                "{testimonials[current].comment}"
+              </p>
             </div>
-          ))}
+
+            <div>
+              <h4 className="text-xl font-bold text-white">{testimonials[current].name}</h4>
+              <p className="text-cyan-400">{testimonials[current].business}</p>
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-3 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrent(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  current === index ? 'bg-cyan-400 w-8' : 'bg-white/20 hover:bg-white/40'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -16,15 +16,17 @@ export default function Contact() {
   };
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/60123456789?text=Hi%20Nessolution,%20I%20need%20a%20website!', '_blank');
+    window.open('https://wa.me/60102345678?text=Hi%20Nessolution,%20I%20need%20help%20with%20my%20project!', '_blank');
   };
 
   return (
-    <section className="py-24 bg-gray-900" id="contact">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Get In <span className="bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Touch</span>
+    <section className="py-32 bg-black relative overflow-hidden" id="contact">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(0,212,255,0.03),rgba(255,255,255,0))]"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+            Get In <span className="text-cyan-400">Touch</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Ready to start your project? Let's discuss how we can help your business grow
@@ -38,8 +40,8 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Email</h4>
@@ -48,18 +50,18 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Phone</h4>
-                    <p className="text-gray-400">+60 12-345 6789</p>
+                    <p className="text-gray-400">+60 10-234 5678</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-cyan-500/20 border border-cyan-500/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Location</h4>
@@ -71,14 +73,14 @@ export default function Contact() {
 
             <button
               onClick={handleWhatsApp}
-              className="w-full py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-4 bg-cyan-500 text-black rounded-lg font-bold hover:bg-cyan-400 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp
             </button>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-white font-semibold mb-2">
@@ -127,7 +129,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full py-3 bg-cyan-500 text-black rounded-lg font-bold hover:bg-cyan-400 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Send Message
                 <Send className="w-5 h-5" />
